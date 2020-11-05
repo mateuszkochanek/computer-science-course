@@ -1,0 +1,9 @@
+msgpack>=1.0
+langcodes>=2
+regex
+
+[jieba]
+jieba
+
+[mecab]
+mecab-python3

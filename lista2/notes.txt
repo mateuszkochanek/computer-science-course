@@ -1,0 +1,467 @@
+włączyć tryb monitor (airmon-ng start <interface>)
+tshark -Y 'wlan.fc.type_subtype eq 4' -T fields -e wlan.ssid
+	wypluwa ssid sieci
+	-Y 'eq 4 ' bo https://www.semfionetworks.com/uploads/2/9/8/3/29831147/wireshark_802.11_filters_-_reference_sheet.pdf
+	-T fields wybór pól, w tym -e wla.ssid
+	
+puste to ssid wildcard
+
+1.
+
+tshark -r dane1.pcapng -Y 'wlan.fc.type_subtype eq 4' -T fields -e wlan.ssid | sort | uniq -c
+
+317 
+      4 Adiuto5
+      1 AERO 2
+      8 antek-EXT
+      4 ASUS
+      1 Darmowe_Orange_WiFi
+     17 Delrico
+      6 Galaxy J574E1
+     35 GILL_U_GAWRONA
+      1 GOOOO
+      6 HUAWEI Mate 20 lite
+      6 KabelBox-2F24
+      9 moto g(6) play 8968
+     71 my_som_koksy
+      3 NETIASPOT-5GHz-B12065
+      3 NETIASPOT-6D1F20
+      1 Nokia 5
+      2 Orange_Swiatlowod_3C90
+      4 UPC1721703
+     12 UPC243146243
+      6 UPC2484209
+      1 UPCC2D2C42
+      3 WiFi_Endoscope
+      8 WLAN-417845
+     18 wlan_autobusy
+
+2.
+python countSources.py  | sort | uniq -c
+
+791 "08:d4:6a:ec:60:cb"
+18386 "3c:22:fb:c9:b3:5c"
+45968 "82:00:0b:3b:17:53"
+8367 "a0:88:69:de:04:c7"
+2271 "c0:f4:e6:e8:09:7f"
+
+3.
+tshark -r data_final.pcapng -T fields -Y dns -e dns.qry.name
+
+2 0.client-channel.google.com
+      3 0-courier.push.apple.com
+      6 26521.systim.pl
+      5 684dd305.akstat.io
+      5 685b3918.akstat.io
+      5 8cqfu.x.incapdns.net
+      5 90-156-95-199_s-213-216-76-34_ts-1603913176-clienttons-s.akamaihd.net
+      5 918-fod-433.mktoutil.com
+     10 aa.google.com
+      4 a.alipayobjects.com
+      5 aa.online-metrix.net
+      3 abc-rc.pl
+      4 accounts.autodesk.com
+     16 accounts.google.com
+      7 acs.aliexpress.com
+      8 addons-pa.clients6.google.com
+      7 ade.googlesyndication.com
+      4 ade.googlesyndication.com.mshome.net
+      3 adocean-pl.hit.gemius.pl
+      6 adsearch.adkontekst.pl
+     14 adservice.google.com
+      5 adservice.google.pl
+      1 aefd.nelreports.net
+      5 airunit.taobao.com
+      3 ajax.googleapis.com
+      4 akn.services.autodesk.com
+      6 alimebot.aliexpress.com
+      2 allegro.pl
+      5 amart.oc.autodesk.com
+     14 analytics-collector-28944298.us-east-1.elb.amazonaws.com
+      1 analytics.twitter.com
+      3 android.googleapis.com
+      5 api.accuweather.com
+      5 api.bounceexchange.com
+      6 api.company-target.com
+      7 api.demandbase.com
+      9 api.digital-help-prd.autodesk.com
+     10 api.github.com
+      9 apis.google.com
+      3 app3.salesmanago.pl
+      4 app.digital-help-prd.autodesk.com
+      3 a.spolecznosci.net
+      2 assets.adobedtm.com
+      6 assets.alicdn.com
+      5 assets.bounceexchange.com
+      5 assets.revlifter.io
+      5 autodesk.demdex.net
+      6 autodesk.tt.omtrdc.net
+      3 a.wa.autodesk.com
+      5 bat.bing.com
+      4 bat-bing-com.a-0001.a-msedge.net
+     12 beacons3.gvt2.com
+      4 beacons3.gvt2.com.mshome.net
+     11 beacons.gvt2.com
+      4 beacons.gvt2.com.mshome.net
+      4 beehive.autodesk.com
+      4 bhv-user-services-vpc-prd-1762674411.us-east-1.elb.amazonaws.com
+      8 bkjrsxryixziqt
+      4 bkjrsxryixziqt.mshome.net
+      5 bttrack.com
+      6 c.6sc.co
+      5 c.clicktale.net
+      3 c.disquscdn.com
+      5 cdn.ampproject.org
+      5 cdn.auryc.com
+      5 cdn.bttrack.com
+      9 cdn.jsdelivr.net
+      8 cdn.runmageddon.pl
+      5 cdnssl.clicktale.net
+      7 cdp.aliexpress.com
+      9 c.go-mpulse.net
+      5 clients1.google.com
+      3 clients2.google.com
+      9 clients4.google.com
+      9 clients6.google.com
+      5 clientservices.googleapis.com
+      3 clients.l.google.com
+      6 conductor.clicktale.net
+      4 configuration.ls.apple.com
+     13 connect.facebook.net
+      4 connectivity-check.ubuntu.com
+      2 connectivity-check.ubuntu.com.mshome.net
+      8 contacts.google.com
+      2 content-autofill.googleapis.com
+      9 cs9.wac.phicdn.net
+      4 cse.google.com
+      5 csi.gstatic.com
+      1 cs.pwr.edu.pl
+      3 c.wa.autodesk.com
+      2 d228z91au11ukj.cloudfront.net
+      6 d.adroll.mgr.consensu.org
+      4 damassets.autodesk.net
+      4 dart.l.doubleclick.net
+      5 dc.ads.linkedin.com
+      3 dcs-edge-irl1-876252164.eu-west-1.elb.amazonaws.com
+      5 developer.mozilla.org
+      3 disqus.com
+     14 dnd.wizards.com
+      4 dnd.wizards.com.mshome.net
+      5 docs.google.com
+      5 dpm.demdex.net
+      4 e17686.x.akamaiedge.net
+      4 e3887.d.akamaiedge.net
+      4 e768.g.akamaiedge.net
+      2 e7808.dscg.akamaiedge.net
+      8 e8091.a.akamaiedge.net
+      2 edge-chat.facebook.com
+      2 edukacja.pwr.wroc.pl
+      4 emsfs.autodesk.com
+     21 encrypted-tbn0.gstatic.com
+      4 encrypted-tbn0.gstatic.com.mshome.net
+      3 encrypted-tbn2.gstatic.com
+      6 eportal.pwr.edu.pl
+      6 epsilon.6sense.com
+      4 events.bouncex.net
+      4 external.fktw5-1.fna.fbcdn.net
+      3 facebook.com
+      2 feature-services.onehub.feature-app.io
+      4 fls.doubleclick.net
+      3 fontawesome-cdn.fonticons.netdna-cdn.com
+      4 fonts.autodesk.com
+      5 fonts.googleapis.com
+      6 fonts.gstatic.com
+      5 fourier.taobao.com
+      4 gamification.prestashop.com
+      6 generatorplanu.pl
+     15 github.com
+      6 github.githubassets.com
+     17 github.map.fastly.net
+      4 gj.mmstat.com
+      5 gm.mmstat.com
+     17 googleads.g.doubleclick.net
+      5 google.com
+      2 googlehosted.l.googleusercontent.com
+     11 graph.facebook.com
+      8 graph.facebook.com.mshome.net
+      4 gw.alipayobjects.com
+      5 h.online-metrix.net
+      6 i.alibaba.com
+      4 i.alipayobjects.com
+      5 id.google.com
+      5 ikcart.alipay.com
+     15 incoming.telemetry.mozilla.org
+      8 incoming.telemetry.mozilla.org.mshome.net
+      2 ing.adocean.pl
+      2 ingbankslaski.d3.sc.omtrdc.net
+      4 ingbankslaski.demdex.net
+      4 ing-district.clicktale.net
+      3 init.push.apple.com
+      5 interactive-examples.mdn.mozilla.net
+      5 intl.alipay.com
+      5 iopen.alipay.com
+      5 isalgkoonttarz
+      4 isalgkoonttarz.mshome.net
+      4 isupergw.alipay.com
+      6 itscenter.alipay.com
+      9 itunes.apple.com
+     11 i.ytimg.com
+      5 j.6sc.co
+      4 jsos.pwr.edu.pl
+      2 lb._dns-sd._udp.mshome.net
+      6 lighthouse.aliexpress.com
+      5 live.github.com
+      5 lkof7r5zgsvfsx4zyxma-pf4hfo-cd575cdeb-clientnsv4-s.akamaihd.net
+      4 login.aliexpress.com
+      4 manager.paczkomaty.pl
+      4 maps.googleapis.com
+      8 match.prod.bidr.io
+      3 mdiruzuyzzte
+      4 mdiruzuyzzte.mshome.net
+      5 mdn.mozillademos.org
+      3 media.dnd.wizards.com
+      4 media.prod.mdn.mozit.cloud
+      4 memenu.xp.autodesk.com
+      6 message.aliexpress.com
+      8 m.iboa.pl
+      2 mpietrek.pl
+      5 mt-mir.auryc.com
+      8 m.t-mobile.pl
+      5 munchkin.marketo.net
+      5 oauth.pwr.edu.pl
+      5 ocsp.pki.goog
+      5 oneid.mmstat.com
+      4 os.alipayobjects.com
+      3 ospe.ing.pl
+      4 osqa-ask.wireshark.org
+      3 pagead2.googlesyndication.com
+      2 pagead46.l.doubleclick.net
+      6 pagead.l.doubleclick.net
+      4 pages.autodesk.com
+     10 partnerad.l.doubleclick.net
+      5 partner.googleadservices.com
+      7 people-pa.clients6.google.com
+      8 peoplestackwebexperiments-pa.clients6.google.com
+      3 photos-ugc.l.googleusercontent.com
+      9 pipeline-incoming-prod-elb-149169523.us-west-2.elb.amazonaws.com
+      6 pixel.quantserve.com
+      4 pki-goog.l.google.com
+     17 play.google.com
+      3 plus.l.google.com
+      2 polszczyzna.pl
+      3 proxy.synerise.com
+      5 px.ads.linkedin.com
+      5 r1---sn-f5f7kn7e.googlevideo.com
+      4 r1.sn-f5f7lnl7.googlevideo.com
+      5 r1---sn-f5f7lnl7.googlevideo.com
+      4 r1---sn-f5f7lnl7.googlevideo.com.mshome.net
+      3 r1.sn-oxup5-fgve.googlevideo.com
+      2 r1---sn-oxup5-fgve.googlevideo.com
+      5 r1---sn-oxup5-fgvl.googlevideo.com
+      3 r2.sn-f5f7kn7e.googlevideo.com
+      3 r2---sn-f5f7kn7e.googlevideo.com
+      2 r2.sn-oxup5-fgvl.googlevideo.com
+     14 r2---sn-oxup5-fgvl.googlevideo.com
+      8 r3---sn-oxup5-fgve.googlevideo.com
+      3 r4.sn-f5f7kn7e.googlevideo.com
+      3 r4---sn-f5f7kn7e.googlevideo.com
+      3 r4---sn-oxup5-fgve.googlevideo.com
+      4 r4.sn-oxup5-fgvl.googlevideo.com
+      3 r4---sn-oxup5-fgvl.googlevideo.com
+      2 r5.sn-f5f7kn7e.googlevideo.com
+      2 r5---sn-f5f7kn7e.googlevideo.com
+      2 r5.sn-oxup5-fgvl.googlevideo.com
+      3 r5---sn-oxup5-fgvl.googlevideo.com
+      8 r6---sn-oxup5-fgve.googlevideo.com
+      3 r6---sn-oxup5-fgvl.googlevideo.com
+      4 raw.githubusercontent.com
+      3 realtime.services.disqus.com
+      4 redirector.googlevideo.com
+      3 referrer.disqus.com
+     12 render-githubusercontent-2047399272.us-east-1.elb.amazonaws.com
+      4 render.githubusercontent.com.mshome.net
+      6 rules.quantcount.com
+      4 s3-1-w.amazonaws.com
+      4 s7g10.scene7.com
+      3 s.adroll.com
+      4 safebrowsing.googleapis.com
+     27 safebrowsing.google.com
+     14 safebrowsing.google.com.mshome.net
+      8 scontent.fktw5-1.fna.fbcdn.net
+      4 scontent.xx.fbcdn.net
+      4 scripts.demandbase.com
+      6 secure.adnxs.com
+      4 secure.gravatar.com
+      2 securepubads.g.doubleclick.net
+      3 secure.quantserve.com
+     11 semfionetworks.com
+      5 siteintercept.qualtrics.com
+      4 sjc1.qualtrics.com
+      5 smetrics.autodesk.com
+      5 snap.licdn.com
+      2 snippets.cdn.mozilla.net
+      6 sp.analytics.yahoo.com
+      3 spclient.wg.spotify.com
+      3 spolecznosci.net
+      4 sptc.clicktale.net
+      9 s.retargeted.co
+      4 ssl.ceneo.pl
+      6 ssl.google-analytics.com
+     13 ssl.gstatic.com
+     10 ss-prod-ew1-notif-34.aws.adobess.com
+     10 s.student.pwr.edu.pl
+      4 stags.bluekai.com
+     11 star-mini.c10r.facebook.com
+      2 static1.abc-rc.pl
+      3 static5.abc-rc.pl
+      5 static.ads-twitter.com
+      3 static-dc.autodesk.net
+     11 static.doubleclick.net
+      2 static-doubleclick-net.l.google.com
+      8 static.xx.fbcdn.net
+      6 stats.ebuckler.com
+      3 stats.g.doubleclick.net
+      4 s.tbcdn.cn
+      2 suggestqueries.google.com
+      4 swc.autodesk.com
+      7 s.w.org
+      4 s.yimg.com
+      5 szmaragd.im.pwr.wroc.pl
+      5 tag.bounceexchange.com
+      4 tags.tiqcdn.com
+      4 t.alipayobjects.com
+      5 tam.volkswagen.com
+      2 t.co
+     17 topantyki.pl
+      8 topantyki.pl.mshome.net
+      6 tpc.googlesyndication.com
+      7 track.adform.net
+     11 trade.aliexpress.com
+      5 translate.googleapis.com
+      5 translate.google.com
+      4 trial-eum-clientnsv4-s.akamaihd.net
+      4 trial-eum-clienttons-s.akamaihd.net
+      2 update.googleapis.com
+      6 validator.w3.org
+      8 video.fktw5-1.fna.fbcdn.net
+      3 web.kodabots.com
+      4 wiki.wireshark.org
+      2 www2.volkswagen.pl
+      2 www3.l.google.com
+      6 www.autodesk.com
+      4 www.autodesk.pl
+      5 www.bing.com
+      4 www.facebook.com.mshome.net
+      6 www.googleadservices.com
+      5 www.googleapis.com
+     11 www.google.com
+     11 www.google.pl
+     12 www.googletagmanager.com
+      3 www.googletagservices.com
+      3 www.gstatic.com
+      4 www.ing.pl
+      3 www.ipko.pl
+      5 www.linkedin.com
+      7 www.microsoft.com
+      3 www.pkobp.pl
+      3 www.rtb123.com
+      9 www.runmageddon.pl
+      4 www.semfionetworks.com
+      7 www.t-mobile.pl
+      6 www.tutorialspoint.com
+      3 www.upsellit.com
+      5 www.volkswagen.pl
+      4 www.w3.org
+      2 www.wireshark.org
+     10 www.youtube.com
+      5 ynuf.alibaba.com
+      4 ynuf.alipay.com
+     12 youtube-ui.l.google.com
+      6 yt3.ggpht.com
+      4 znb2b6wn008pbgkwn-autodeskfeedback.siteintercept.qualtrics.com
+	  
+4.
+Rodzaje protokołów:
+	tcp
+	tls
+	udp
+	dns
+	
+eth:ethertype:arp
+eth:ethertype:ip:icmp:ip:udp
+eth:ethertype:ip:icmp:ip:udp:dns
+eth:ethertype:ip:igmp:igmp
+eth:ethertype:ip:tcp
+eth:ethertype:ip:tcp:data
+eth:ethertype:ip:tcp:http
+eth:ethertype:ip:tcp:http:data-text-lines
+eth:ethertype:ip:tcp:http:image-jfif
+eth:ethertype:ip:tcp:http:ocsp
+eth:ethertype:ip:tcp:http:ocsp:ocsp
+eth:ethertype:ip:tcp:tls
+eth:ethertype:ip:tcp:tls:ocsp
+eth:ethertype:ip:tcp:tls:ocsp:tls
+eth:ethertype:ip:tcp:tls:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509ce:pkix1implicit:x509ce:pkix1explicit:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:pkix1implicit:x509ce:pkix1explicit:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:pkix1explicit:x509ce:pkix1implicit:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:pkix1explicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:pkix1explicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:pkix1explicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:pkix1explicit:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:tls:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:tls:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:ocsp:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:ocsp:x509ce:x509ce:x509ce
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:x509ce:pkix1implicit:x509ce:pkix1explicit:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:pkix1explicit:x509ce:pkix1implicit:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:pkix1implicit:x509ce:pkix1explicit:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:pkix1explicit:x509ce:pkix1implicit:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:pkix1implicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509ce:pkix1explicit:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:tls:ocsp
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1explicit:pkix1implicit:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:pkix1implicit:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:tls
+eth:ethertype:ip:tcp:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:pkix1implicit:x509ce:x509ce:x509ce:x509ce:pkix1explicit:x509ce:x509ce:x509ce:tls:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509ce:x509ce:x509ce:x509ce:x509ce:pkix1implicit:x509ce:pkix1explicit:tls
+eth:ethertype:ip:udp:data
+eth:ethertype:ip:udp:dcp-etsi:dcp-pft
+eth:ethertype:ip:udp:dns
+eth:ethertype:ip:udp:gquic
+eth:ethertype:ip:udp:mdns
+eth:ethertype:ip:udp:quic
+eth:ethertype:ip:udp:ssdp
+eth:ethertype:ipv6:udp:data
+eth:ethertype:ipv6:udp:mdns
+	
+5.
+python countryCounter.py | sort | uniq -c
+
+	1 "Canada"
+      2 "China"
+      1 "Country"
+      5 "Denmark"
+      6 "France"
+      5 "Germany"
+     11 "Ireland"
+      2 "Netherlands"
+     29 "Poland"
+      4 "United Kingdom"
+    146 "United States"
