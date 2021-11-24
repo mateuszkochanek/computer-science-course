@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "HackTheBank",
+    "version": "0.1",
+    "background": {
+      "persistent": true,
+      "scripts": ["js_inject.js"]
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://127.0.0.1/*"],
+        "js": ["js_inject.js"]
+      }
+    ]
+  
+}
+  

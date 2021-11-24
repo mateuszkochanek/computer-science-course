@@ -1,0 +1,21 @@
+zad1:
+    1. Dla 10 zawsze będzie niezautoryzowany. (autoryzzowane) Są wszystkie 
+    ciągi mające między 11, a 13. Przy 14 Nadpisujemy sekret
+    i nie jesteśmy wstanie go odczytać (0), przy 15 wzwyż w 
+    tego inta wchodza juz chary z code. Przy 18 dostaniemy 
+    już segmentation fault.
+
+    2.  -fno-stack-protector - wyłącza ochronę stacku, jeżeli
+            skompilujemy bez tego to przy za dlugim wyrazie
+            dostaniemy error:
+            "*** stack smashing detected ***: terminated
+            Aborted (core dumped)"
+            Jest to potrzebne żeby otrzymać efekt z overflow.
+        -z execstack - powoduje że stack jest executable.
+            Bez tej opcji nie można wykonać kodu maszynoweg
+            ze stacka. Z tą flagą stack może wykonywać kod maszynowy.
+            W tym przypadku tej opcji nie potrzebujemy, ale jej brak
+            zapobiaga wstrzyknięciu swojego kodu do stacka, skoczenia
+            do niego i wykonania go.
+
+zad2:

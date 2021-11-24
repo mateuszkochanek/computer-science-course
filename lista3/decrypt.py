@@ -6,11 +6,11 @@ def main():
     i = 0
     decipher_module = DecipherModule()
     if len(sys.argv) > 1 :
-        number_of_cryptograms = sys.argv[1]
+        number_of_cryptograms = int(sys.argv[1])
     else:
         number_of_cryptograms = 21
 
-    filepath = 'encrypted_data.txt'
+    filepath = 'data1.txt'
     with open(filepath) as fp:
         for cnt, line in enumerate(fp):
             decipher_module.add_cryptogram(line)

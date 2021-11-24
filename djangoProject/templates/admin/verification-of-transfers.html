@@ -1,0 +1,32 @@
+{% extends "base/user-pages-template.html" %}
+
+{% block extension-styles %}
+
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated and request.user.is_staff %}
+        <p>Transfer history:</p>
+
+        {% autoescape off %}
+        {% for transfer in transfers%}
+            <div class="card">
+                <p class="id_sender">{{ transfer.sender }}</p>
+                <p class="id_recipient_name">{{ transfer.recipient_name }}</p>
+                <p class="id_recipient_account">{{ transfer.recipient_account }}</p>
+                <p class="id_title">{{ transfer.title }}</p>
+                <p class="id_amount">{{ transfer.amount }}</p>
+                <p class="id_date">{{ transfer.date }}</p>
+                <p class="id_is_confirmed">Was confirmed?: {{ transfer.is_confirmed }}</p>
+                <form method="POST" action="/admin/transfer-verification/{{ transfer.id }}/">
+                    {% csrf_token %}
+                    <input type="submit" name="Search">
+                </form>
+            </div>
+        {% endfor %}
+        {% endautoescape %}
+    {% else %}
+        <p>Naaah sorry bro</p>
+    {% endif %}
+
+{% endblock %}

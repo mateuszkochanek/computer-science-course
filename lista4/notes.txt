@@ -1,0 +1,61 @@
+Pytania:
+1. Czym jest certificate pinning? dlaczego się go stosuje?
+Problem certificate pinningu ma swój początek w tym, że każdy CA może wystawić certyfikat zaufania dla dowolnej domeny (tak główne jak i pośrednie centra certyfikacji). Może to spowodować zagrożenia takie jak mississuance (wydanie cert. nawet jak nie powinien być wydany), kompromitacja CA czy man in the middle attack. Podpinanie certyfikatów działa w taki sposób, że operator może podpiąć konkretne CA pod swoje domeny i w ten sposób cokolwiek z innym podpisem będzie traktowane jako niewłaściwe. (np Google i Google Interet Authority G2)
+W praktyce rozwiązanie to niesie za sobą też problemy.
+
+2. Czym jest Extended validation dla certyfikatów SSL?
+EV SSL jest specjalnym certyfikatem rozszerzonej walidacji. Właściciel strony musi przejść ustandaryzowany przez CA/Browser forum, bardzo dokładny proces weryfikacyjny, który udowadnia wyłączne prawa do domeny i potwierdza że jest ona prawdziwa i legalna. Na takim certyfikacie widać dodatkowe inforamcje takie jak np. kraj czy nazwę firmy. (Norton taki ma)
+
+3. Kto da się nabrać na taki atak?(zxad3)
+To zależy od tego jak przeprowadzony jest atak i na jaką ofiarę trafi osoba próbujaca phishingu. Jest wiele czynności, które można podjąć aby nie dać się na taki atak złapać:
+ - sprawdzać czy strona używa https
+ - sprawdzać czy link się zgadza
+ - korzystać z antywirusa w przegladarce
+ - nieotwierać podejrzanych aili, nie klikać w nieznane linki
+ - sprawdzać informacje o stronach w których podajemy swoje dane
+Oczywiście jeżeli hakerowi uda się przejąć systemy w, którymś CA to nasze szanse na wypatrzenie podstępu staną się prawie zerowe.
+
+4. Czym są CRL i OCSP?
+CRL - (lista unieważnionych certyfikatów)
+OSCP - standard opisujący protokół komunikacyjny dla sprawdzania statusu certyfikatów. Standaryzuje on format żądania i odpowiedzi z wynikiem weryfikacji. (praktyczniejsze, bezpieczniejsze niż CRL)
+
+5. Co się stanie, gdyy ktoś pozna klucz tajny serwera www?
+Może wtedy przeprowadzić atak man-in-the-middle, ponieważ taki klucz pozwala na odszyfrowanie całej komunikacji. Atakujący ma możliwość podsłuchwania, podszywania się pod usługi i kradzieży danych.
+
+6. Co się stanie gdy ktoś pozna klucz tajny CA, który podpisywał certyfikat serwera?
+Będzie mógł stworzyć fałszywe certyfikaty, np. podszyć się pod ten serwer www.
+
+7. Co się stanie gdy ktoś pozna klucz tajny jakiegoś CA?
+To samo tylko że dla wszystkich scenariuszy gdzie używamy certyfikatów.
+
+8. Co się stanie gdy pewne CA wydaje certyfikaty w oparciu o słabe funkicje haszujące np. MD5?
+Istnieje ryzyko, że ktoś poprzez atak na MD5 skonstruujue fałszywy CA i będzie mógł generaować działające "fałszywe" certyfikaty.
+
+9. Czym są downgrade attacks na TLS?
+Atak przez, który strony rezygnują z bezpiecznego sposobu komunikacji na rzecz starszego i mniej bezpiecznego. Osoba po środku przez zatrzymywanie niektórych pakietów może przekonać przeglądarkę, że serwer nie obsługuje najwyższej wersji TLS i przez to zmienić ją na niższą.
+
+10. Czym jest HTTP Strict Transport Security (HSTS)?
+Jest to mechanizm bezpieczeństwa sieci, który chroni przed np. wymuszonym downgradem poziomu protokołu. Działa to w ten sposób, że jeżeli przeglądarka zobaczy ten nagłówek w zapytaniu witryny to na określony tam czas cała komunikacja odbywa się poprzez https (aqutomatycznie podmienia http na https)
+
+_____________________________________________________
+zad1:
+Dla klucza A:
+1. openssl genrsa -out privkeyA.pem 2048
+2. openssl req -new -key privkeyA.pem -out certA.csr
+
+Dla klucza B:
+1. openssl genrsa -out privkeyB.pem 2048
+2. openssl req -new -x509 -key privkeyB.pem -out CAcert.crt -days 15
+3. openssl x509 -req -days 45 -in certA.csr -CA CAcert.crt -CAkey privkeyB.pem -set_serial 01 -out certA.crt
+_____________________________________________________
+
+zad2:
+Porównałem, http jest około 8 razy szybsze, ale testy zostały przeprowadzone na moim, zupełnie niezoptymalizowanym serwerze. Aktualnie https może być często nawet szybszy od http bo umożliwia użycie wielu narzędzi do optymalizacji takich jak np. html/2, kontynuowanie sesji, czy kompresja Brotli.
+U mnie jednak spadek wydajności jest widoczny, i myślę, że największy udział w tym ma handshake (w tym kodowanie asymetryczne) i dopiero potem samo szyfrowanie.
+http://www.httpvshttps.com/
+  _____________________________________________________
+
+zad3:
+Breach in DigiNotar (holandia)
+https://s.student.pwr.edu.pl/iwc/svc/iwcp/login.iwc
+_____________________________________________________

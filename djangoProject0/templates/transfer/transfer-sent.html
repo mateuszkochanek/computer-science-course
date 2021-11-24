@@ -1,0 +1,16 @@
+{% extends "base/user-pages-template.html" %}
+
+{% block extension-styles %}
+
+{% endblock %}
+
+{% block content %}
+    <p>Transfer sent properly.</p>
+    <p id="id_sender">{{ transfer.sender }}</p>
+    <p id="id_recipient_name">{{ transfer.recipient_name }}</p>
+    <p id="id_recipient_account">{{ transfer.recipient_account }}</p>
+    <p id="id_title">{{ transfer.title }}</p>
+    <p id="id_amount">{{ transfer.amount }}</p>
+    <p id="id_date">{{ transfer.date }}</p>
+    <a href="/">Go back</a>
+{% endblock %}

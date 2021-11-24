@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load bootstrap4 %}
+    {% block default-styles %}
+        {% load static %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base-template.css' %}">
+    {% endblock %}
+    {% block extension-styles %}{% endblock %}
+
+    {% block title %}
+        <title>Secure Bank</title>
+    {% endblock %}
+    <script type="text/javascript" src="{% static 'js/jquery.js'%}"></script>
+    {% bootstrap_javascript %}
+</head>
+<body>
+    {% block navbar %}{% endblock %}
+    {% block content %}Content{% endblock %}
+</body>
+
+</html>

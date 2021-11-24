@@ -1,0 +1,7 @@
+1. Ma duży wpływ, im dluzszy kryptogram tym gorsza jakość odkodowania. Jednak w pewnym sensie jest to to samo co podpunkt drugi. Mój program najlepiej odszyfrowywal oczywiście najkrótsze z wiadomości.
+
+2. Program wyświetla dane względnie czytelne dla około 8 kryptogramów.
+
+3. Sprawdzilem sosemanuk i salse20 dla tych samych kluczy ale różnych nounców.
+
+4. Mój program zadziała tylko dla kodowania ASCII, żeby używać innych kodowań musielibyśmy w pierwszej kolejności dodać je do słownika.
