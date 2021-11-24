@@ -17,7 +17,12 @@ Exercises form Computer Security course on the University of Technology in Wroc≈
   - I had to use database to store user passwords in a safe manner (for example using Memory-Hard Functions).
   - I had to create a script that was able to change an account number during transfer, but on history it showed a correct one.
   - I change this script into an extension for my brower.
-  - I also tried using this script in cross site scripting attack (had to turn off some safety measures in django framework).
 
 ### List 6
   - I had to create and analyze a c++ program with buffer overflow error.
+
+### List 7
+  - I had to modify my django banking app (djangoProject0 in this repository). I added an admin account that could accept bank transfers.
+  - I had to attack my app with SQL injection, XSS and XSRF. They were used to show data that I had no access to and to accept bank transfers without admin knowing (had to turn off some safety measures in django framework).
+  - I modified my app to use TLS certificate, so only someone with user certificate in browser could login.
+  - I modified my app to use REST API with and without JWT tokens.
