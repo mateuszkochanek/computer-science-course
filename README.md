@@ -14,9 +14,10 @@ Exercises form Computer Security course on the University of Technology in Wroc≈
 
 ### List 5
   - I used django to create a really crappy banking app (djangoProject in this repository).
-  - I had to use memory store user passwords in asafe manner (for example using Memory-Hard Functions).
-  - I had to create a script that was able to change and account number during transfer, but on history it showed a correct one.
+  - I had to use database to store user passwords in a safe manner (for example using Memory-Hard Functions).
+  - I had to create a script that was able to change an account number during transfer, but on history it showed a correct one.
   - I change this script into an extension for my brower.
+  - I also tried using this script in cross site scripting attack (had to turn off some safety measures in django framework).
 
 ### List 6
   - I had to create and analyze a c++ program with buffer overflow error.
