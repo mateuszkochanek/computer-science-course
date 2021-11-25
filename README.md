@@ -3,7 +3,7 @@ Exercises form Computer Security course on the University of Technology in Wroc≈
 
 ### List 2
   - I had go to a public place, create a public wifi and use wireshark to collect data about users (SSIDs, amout of devices by DNS, sites visited, protocols used)
-  - I had to write a script that was able to catch not encrypted session (http) and change cookies in my browser to use this session.
+  - I had to write a script that was able to catch not encrypted session (http) and change cookies in my browser to use this session. (of course i did it in a controlled environment, not to someone else)
 
 ### List 3
   - I had 15 cryptograms encrypted with stream cipher but with the same key. I had to try to decrypt them by xoring.
